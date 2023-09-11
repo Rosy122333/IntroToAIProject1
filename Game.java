@@ -34,4 +34,24 @@ public class Game {
         return false;
     }
 
+    public void readMove(String move) {
+        int n2X = Integer.parseInt(move.substring(move.length() - 3, move.length() - 2));
+        int n2Y = Integer.parseInt(move.substring(move.length() - 1));
+        int n1X = Integer.parseInt(move.substring(move.length() - 7, move.length() - 6));
+        int n1Y = Integer.parseInt(move.substring(move.length() - 5, move.length() - 4));
+        edges.add(new Edge(new Node(n1X, n1Y), new Node(n2X, n2Y)));
+    }
+    
+    public void writeToFile(){
+        
+        
+        
+    }
+    public void takeMove(Edge moveToTake){
+        edges.add(moveToTake);
+        writeToFile(moveToTake);
+        
+        
+    }
+
 }
