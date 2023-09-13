@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class Game {
@@ -44,22 +46,23 @@ public class Game {
         int n2Y = Integer.parseInt(moveData[4]);
         edges.add(new Edge(new Node(n1X, n1Y), new Node(n2X, n2Y)));
     }
-    
-    public void writeToFile(Edge moveToTake){
+
+    public void writeToFile(Edge moveToTake) {
         String toWrite = groupname + moveToTake;
-        URL pathToMoveFile = main.class.getResource("movefile");
-        File moveFile = new File(pathToMoveFile);
-        FileWriter moveWriter = new FileWriter(moveFile,false);
-        moveWriter.write(toWrite);
-        moveWriter.close();
-        
-        
+        // URL pathToMoveFile = main.class.getResource("movefile");
+        File moveFile = new File("movefile");
+        try (FileWriter moveWriter = new FileWriter(moveFile, false);) {
+            moveWriter.write(toWrite);
+            moveWriter.close();
+        } catch (Exception e) {
+        }
+
     }
-    public void takeMove(Edge moveToTake){
+
+    public void takeMove(Edge moveToTake) {
         edges.add(moveToTake);
         writeToFile(moveToTake);
-        
-        
+
     }
 
 }
