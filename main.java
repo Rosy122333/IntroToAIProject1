@@ -24,7 +24,35 @@ public class main {
       System.out.println("File not there");
       e.printStackTrace();
     }
+
+    if (endGameFile()==false) {
+      move = oppMove();
+      if (oppMove.equals("")) {
+        //meaning start of game it's our turn
+        
+      }
+    }
+
+
+
+
+
+
   }
+
+public static boolean endGameFile() throws IOException {
+  try {
+  File myObject = new File("end_game");
+  Scanner myReader2 = new Scanner(myObject);
+  return true;
+  } catch(FileNotFoundException e) {
+    return false;
+  }
+}
+
+
+
+
 
   public static String oppMove() throws IOException {
     File file = new File("move_file");
