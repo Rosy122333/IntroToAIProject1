@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import static java.lang.Thread.sleep;
 
 public class Game {
-    static Edge passEdge = new Edge(new Node(0,0),new Node(0,0));
+    static Edge passEdge = new Edge(new Node(0, 0), new Node(0, 0));
     String groupname;
     int width;
     int height;
     ArrayList<Edge> edges;
     Solver s;
+
     public Game(int width, int height, ArrayList<Edge> edges, String groupname) {
         this.width = width;
         this.height = height;
@@ -17,9 +18,10 @@ public class Game {
         this.groupname = groupname;
     }
 
-    public void setSolver(Solver in){
+    public void setSolver(Solver in) {
         s = in;
     }
+
     public boolean isOnBoard(Node n) {
         return n.getX() >= 0 && n.getX() < width && n.getY() >= 0 && n.getY() < height;
     }
@@ -44,14 +46,17 @@ public class Game {
     }
 
     public void readMove() {
-        String move  = "";
+        String move = "";
         File moveFile = new File("movefile");
-        try(BufferedReader br = new BufferedReader(new FileReader(moveFile));){
+        try (BufferedReader br = new BufferedReader(new FileReader(moveFile));) {
             move = br.readLine();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        catch(Exception e){e.printStackTrace();};
+        ;
 
-
+        if (move == "")
+            return;
         String[] moveData = move.split(" ,");
         // GroupName would be moveData[0]
         int n1X = Integer.parseInt(moveData[1]);
@@ -68,7 +73,9 @@ public class Game {
         try (FileWriter moveWriter = new FileWriter(moveFile, false);) {
             moveWriter.write(toWrite);
             moveWriter.close();
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -78,21 +85,20 @@ public class Game {
 
     }
 
-    public void handleGo(){
+    public void handleGo() {
         readMove();
         takeMove(s.getBestMove(this));
         sleepForRef();
     }
 
-
-    public void handlePass(){
+    public void handlePass() {
 
         readMove();
         writeToFile(passEdge);
         sleepForRef();
     }
 
-    protected void sleepForRef(){
+    protected void sleepForRef() {
         try {
             Thread.sleep(105);
         } catch (InterruptedException e) {
