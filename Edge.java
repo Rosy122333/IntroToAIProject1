@@ -23,5 +23,8 @@ public class Edge {
         this.n2 = n2;
     }
 
+    public String toString(){
+        return " " + n1 + " " + n2;
+    }
 
 }
