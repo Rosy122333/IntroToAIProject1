@@ -1,19 +1,25 @@
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
+
 public class Game {
+    static Edge passEdge = new Edge(new Node(0,0),new Node(0,0));
     String groupname;
     int width;
     int height;
     ArrayList<Edge> edges;
-
-    public Game(int width, int height, ArrayList<Edge> edges) {
+    Solver s;
+    public Game(int width, int height, ArrayList<Edge> edges, String groupname) {
         this.width = width;
         this.height = height;
         this.edges = edges;
+        this.groupname = groupname;
     }
 
+    public void setSolver(Solver in){
+        s = in;
+    }
     public boolean isOnBoard(Node n) {
         return n.getX() >= 0 && n.getX() < width && n.getY() >= 0 && n.getY() < height;
     }
@@ -37,7 +43,15 @@ public class Game {
         return false;
     }
 
-    public void readMove(String move) {
+    public void readMove() {
+        String move  = "";
+        File moveFile = new File("movefile");
+        try(BufferedReader br = new BufferedReader(new FileReader(moveFile));){
+            move = br.readLine();
+        }
+        catch(Exception e){e.printStackTrace();};
+
+
         String[] moveData = move.split(" ,");
         // GroupName would be moveData[0]
         int n1X = Integer.parseInt(moveData[1]);
@@ -54,8 +68,7 @@ public class Game {
         try (FileWriter moveWriter = new FileWriter(moveFile, false);) {
             moveWriter.write(toWrite);
             moveWriter.close();
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {e.printStackTrace();}
 
     }
 
@@ -65,4 +78,25 @@ public class Game {
 
     }
 
+    public void handleGo(){
+        readMove();
+        takeMove(s.getBestMove(this));
+        sleepForRef();
+    }
+
+
+    public void handlePass(){
+
+        readMove();
+        writeToFile(passEdge);
+        sleepForRef();
+    }
+
+    protected void sleepForRef(){
+        try {
+            Thread.sleep(105);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 }

@@ -1,6 +1,7 @@
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.util.Scanner;
 import java.net.*;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -11,19 +12,27 @@ public class main {
 
 
   public static void main(String[] args) {
-    try {
-        URL path = main.class.getResource("groupname.go");
-      File myObj = new File(path.getFile());
-      Scanner myReader = new Scanner(myObj);
-      while (myReader.hasNextLine()) {
-        String data = myReader.nextLine();
-        System.out.println(data);
+      String groupName = "groupname"; // Can make this an argument or read from a text document
+      Game currentGame = new Game(10,10, new ArrayList<Edge>(81*4),groupName);
+      currentGame.setSolver(new HumanSolver());
+       loop:while(!(new File("end_game").exists())) {
+         URL pathToPass = main.class.getResource("groupname.pass");
+           File passFile = new File(pathToPass.getFile());
+         if(passFile.exists()) {
+           currentGame.handlePass();
+           continue loop; // if passFile exists then go back to loop
+         }
+
+
+        URL pathToGo = main.class.getResource("groupname.go");
+        File goFile = new File(pathToGo.getFile());
+        if (goFile.exists()) {
+          currentGame.handleGo();
+        }
       }
-      myReader.close();
-    } catch (FileNotFoundException e) {
-      System.out.println("File not there");
-      e.printStackTrace();
-    }
+
+
+
   }
 
   public static String oppMove() throws IOException {
