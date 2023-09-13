@@ -8,6 +8,9 @@ import java.nio.file.Paths;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.Random;
+
+
 import java.lang.*;
 
 public class main {
@@ -17,7 +20,9 @@ public class main {
   public static void main(String[] args) {
     //try {
     	
-      URL path = main.class.getResource("groupname.go");
+	  Random rand = new Random();
+	  Game game = new Game(9,9,new ArrayList<Edge>());
+	  
       if (FileFoundInUnder2minutes("groupname.go") == false) {
     	  
       } else {
@@ -25,8 +30,10 @@ public class main {
     		  //do something game ended
     	  } else {
     		  if (FileFound("move_file")) {
+    			  URL path = main.class.getResource("move_file");
     			  File myObj = new File(path.getFile());
     	      		Scanner myReader = new Scanner(myObj);
+					
     	      		while (myReader.hasNextLine()) {
     	      			String data = myReader.nextLine();
     	      			System.out.println(data);
@@ -35,7 +42,22 @@ public class main {
     	      				//meaning it's the start of the game
     	      				// and our turn to pick a move
     	      			} else {
-    	      				//save this data somewhere and do stuff
+    	      				game.readMove(data); //save this data somewhere
+    	      				
+    	      				//making a move      just testing purposes
+    	      				int row = rand.nextInt(10);
+    	      				int col = rand.nextInt(10);
+    	      				Node n1 = new Node(row,col);
+    	      				Node n2 = new Node(row,col+1);
+    	      				Edge edge = new Edge(n1,n2);
+    	      				if (game.isLegal(edge)) {
+    	      					//add it to move file
+    	      					game.writeToFile(edge);
+    	      					
+    	      				}
+    	      				
+    	      				
+    	      				
     	      			}
     	      			
     	      		}
