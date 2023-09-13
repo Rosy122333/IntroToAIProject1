@@ -1,6 +1,7 @@
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.util.Scanner;
 import java.net.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,61 +19,28 @@ public class main {
 
 
   public static void main(String[] args) {
-    //try {
-    	
-	  Random rand = new Random();
-	  Game game = new Game(9,9,new ArrayList<Edge>());
-	  
-      if (FileFoundInUnder2minutes("groupname.go") == false) {
-    	  
-      } else {
-    	  if (FileFound("end_game")) {
-    		  //do something game ended
-    	  } else {
-    		  if (FileFound("move_file")) {
-    			  URL path = main.class.getResource("move_file");
-    			  File myObj = new File(path.getFile());
-    	      		Scanner myReader = new Scanner(myObj);
-					
-    	      		while (myReader.hasNextLine()) {
-    	      			String data = myReader.nextLine();
-    	      			System.out.println(data);
-    	      			myReader.close();
-    	      			if (data.equals("")) {
-    	      				//meaning it's the start of the game
-    	      				// and our turn to pick a move
-    	      			} else {
-    	      				game.readMove(data); //save this data somewhere
-    	      				
-    	      				//making a move      just testing purposes
-    	      				int row = rand.nextInt(10);
-    	      				int col = rand.nextInt(10);
-    	      				Node n1 = new Node(row,col);
-    	      				Node n2 = new Node(row,col+1);
-    	      				Edge edge = new Edge(n1,n2);
-    	      				if (game.isLegal(edge)) {
-    	      					//add it to move file
-    	      					game.writeToFile(edge);
-    	      					
-    	      				}
-    	      				
-    	      				
-    	      				
-    	      			}
-    	      			
-    	      		}
-    		  
-    		  }
-      		
-      		}
-    	  
-      }	
-   // } catch (FileNotFoundException e) {
-   //   System.out.println("File not there");
-    //  e.printStackTrace();
-    //}
+      String groupName = "groupname"; // Can make this an argument or read from a text document
+      Game currentGame = new Game(9,9, new ArrayList<Edge>(81*4),groupName);
+      currentGame.setSolver(new HumanSolver());
+       loop:while(!(new File("end_game").exists())) {
+         URL pathToPass = main.class.getResource("groupname.pass");
+           File passFile = new File(pathToPass.getFile());
+         if(passFile.exists()) {
+           currentGame.handlePass();
+           continue loop; // if passFile exists then go back to loop
+         }
 
-    
+
+        URL pathToGo = main.class.getResource("groupname.go");
+        File goFile = new File(pathToGo.getFile());
+        if (goFile.exists()) {
+          currentGame.handleGo();
+        }
+      }
+
+
+
+
   }
 
   public static String oppMove() throws IOException {

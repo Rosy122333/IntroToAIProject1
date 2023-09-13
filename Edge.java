@@ -24,7 +24,7 @@ public class Edge {
     }
 
     public String toString(){
-        return " " + n1 + " " + n2;
+        return " " + n1 + " " + n2; // ToString in form " x1,y1 x2,y2"
     }
 
 }
