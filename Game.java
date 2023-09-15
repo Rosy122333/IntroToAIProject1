@@ -47,7 +47,7 @@ public class Game {
 
     public void readMove() {
         String move = "";
-        File moveFile = new File("movefile");
+        File moveFile = new File("move_file");
         try (BufferedReader br = new BufferedReader(new FileReader(moveFile));) {
             move = br.readLine();
         } catch (Exception e) {
@@ -69,7 +69,7 @@ public class Game {
     public void writeToFile(Edge moveToTake) {
         String toWrite = groupname + moveToTake;
         // URL pathToMoveFile = main.class.getResource("movefile");
-        File moveFile = new File("movefile");
+        File moveFile = new File("move_file");
         try (FileWriter moveWriter = new FileWriter(moveFile, false);) {
             moveWriter.write(toWrite);
             moveWriter.close();
