@@ -62,7 +62,8 @@ public class Game {
         int n1X = Integer.parseInt(moveData[1]);
         int n1Y = Integer.parseInt(moveData[2]);
         int n2X = Integer.parseInt(moveData[3]);
-        int n2Y = Integer.parseInt(moveData[4]);
+        int n2Y = Integer.parseInt(moveData[4])
+        if (n1X == 0 && n1Y == 0 & n2X == 0 && n2Y == 0) return; // In case of pass move -> do nothing
         edges.add(new Edge(new Node(n1X, n1Y), new Node(n2X, n2Y)));
     }
 
