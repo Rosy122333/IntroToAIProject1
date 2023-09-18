@@ -2,3 +2,5 @@
 move_file
 *.go
 movefile
+.idea/workspace.xml
+dots_boxes_referee/
