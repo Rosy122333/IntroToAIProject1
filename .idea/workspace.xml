@@ -4,26 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44440a45-2227-4754-9b4e-1572bac53bf7" name="Changes" comment="">
+    <list default="true" id="44440a45-2227-4754-9b4e-1572bac53bf7" name="Changes" comment="editing readMove">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Board.Java" beforeDir="false" afterPath="$PROJECT_DIR$/Board.Java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/uttt_referee_v7.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/core_gameplay.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/core_gameplay.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/dab_external_players.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/display.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/display.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/dotsandboxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/dotsandboxes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/external_players.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/external_players.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/human.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/human.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/planning.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/referee.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/referee.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/testing.py" beforeDir="false" />
+    </list>
+    <list id="b2e3a744-864c-4d49-af11-142f97485fc8" name="Changes by Cata" comment="">
+      <change beforePath="$PROJECT_DIR$/Board.Java" beforeDir="false" afterPath="$PROJECT_DIR$/Board.Java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Solver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Solver.java" afterDir="false" />
+    </list>
+    <list id="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" name="Changes by eleanorfoley" comment="">
+      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +41,24 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/Board.Java">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="3" changelist="44440a45-2227-4754-9b4e-1572bac53bf7" />
+        <range start1="5" end1="5" start2="8" end2="10" changelist="b2e3a744-864c-4d49-af11-142f97485fc8" />
+        <range start1="14" end1="14" start2="19" end2="21" changelist="b2e3a744-864c-4d49-af11-142f97485fc8" />
+        <range start1="22" end1="22" start2="29" end2="30" changelist="b2e3a744-864c-4d49-af11-142f97485fc8" />
+        <range start1="36" end1="36" start2="44" end2="98" changelist="b2e3a744-864c-4d49-af11-142f97485fc8" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/Game.java">
+      <ranges>
+        <range start1="12" end1="12" start2="12" end2="14" changelist="44440a45-2227-4754-9b4e-1572bac53bf7" />
+        <range start1="65" end1="66" start2="67" end2="68" changelist="b2e3a744-864c-4d49-af11-142f97485fc8" />
+        <range start1="82" end1="84" start2="84" end2="86" changelist="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,8 +96,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1695144951411</updated>
-      <workItem from="1695144952895" duration="1024000" />
+      <workItem from="1695144952895" duration="4213000" />
     </task>
+    <task id="LOCAL-00001" summary="editing readMove">
+      <option name="closed" value="true" />
+      <created>1695146026295</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1695146026295</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,5 +122,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="editing readMove" />
+    <option name="LAST_COMMIT_MESSAGE" value="editing readMove" />
   </component>
 </project>

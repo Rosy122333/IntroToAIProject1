@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Board {
     boolean isMyTurn;
     boolean[][] eVert;// Vertical Edges

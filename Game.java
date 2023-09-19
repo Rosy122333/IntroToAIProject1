@@ -10,6 +10,8 @@ public class Game {
     static int height;
     Board currentBoard;
     Solver s;
+    int scoreMax;
+    int scoreMin;
 
     public Game(int width, int height, String groupname) {
         Game.width = width;
