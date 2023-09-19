@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="44440a45-2227-4754-9b4e-1572bac53bf7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/IntroToAIProject1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HumanSolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Solver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/uttt_referee_v7.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/core_gameplay.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/core_gameplay.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/dab_external_players.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/display.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/dotsandboxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/dotsandboxes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/external_players.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/external_players.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/human.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/human.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/planning.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/referee.py" beforeDir="false" afterPath="$PROJECT_DIR$/dots_boxes_referee/referee.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dots_boxes_referee/testing.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,15 +37,60 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2VcouOu0Dhm2rTlu1SMTGYoNyu5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "AP-gametree",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="44440a45-2227-4754-9b4e-1572bac53bf7" name="Changes" comment="" />
+      <created>1695144951411</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695144951411</updated>
+      <workItem from="1695144952895" duration="1024000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
