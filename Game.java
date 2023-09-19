@@ -65,7 +65,7 @@ public class Game {
         }
         ;
 
-        if (move == "")
+        if (move.equals(""))
             return;
         String[] moveData = move.split("([ ,])+");
         // GroupName would be moveData[0]
