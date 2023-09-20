@@ -86,19 +86,12 @@ public class Board {
     }
 
 
-    public ArrayList<Edge> availableMovesHelper(boolean[][] board) {
+    public ArrayList<Edge> availableMovesHelper(boolean[][] board, boolean isHorizontal) {
         ArrayList<Edge> moves = new ArrayList<Edge>();
         for (int i = 0; i < board.length; i++) { //rows or eVert
-            for (int j = 0; j < board[i].length; j++) {
+            for (int j = 0; j < board[i].length; j++) { //number of colmns at row i
                 if (board[i][j] == false) {
-                    moves.add(new Edge(true,i,j));
-                }
-            }
-        }
-        for (int i = 0; i < board[0].length; i++) { //rows or eVert
-            for (int j = 0; j < board.length; j++) {
-                if (board[j][i] == false) {
-                    moves.add(new Edge(false,i,j));
+                    moves.add(new Edge(isHorizontal,i,j));
                 }
             }
         }
@@ -107,8 +100,8 @@ public class Board {
 
     public ArrayList<Edge> availableMoves(Board board) {
         ArrayList<Edge> moves = new ArrayList<Edge>();
-        ArrayList<Edge> movesHori = availableMovesHelper(board.eHori);
-        ArrayList<Edge> movesVert = availableMovesHelper(board.eVert);
+        ArrayList<Edge> movesHori = availableMovesHelper(board.eHori, true);
+        ArrayList<Edge> movesVert = availableMovesHelper(board.eVert, false);
         moves.addAll(movesHori);
         moves.addAll(movesVert);
         return moves;
