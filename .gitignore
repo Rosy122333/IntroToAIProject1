@@ -4,3 +4,4 @@ move_file
 movefile
 .idea/workspace.xml
 dots_boxes_referee/
+*.xml

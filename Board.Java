@@ -10,8 +10,8 @@ public class Board {
     ArrayList<Edge> allPossibleMoves;
 
     public Board(int sizeX, int sizeY) {
-        eVert = new boolean[sizeX - 1][sizeY];
-        eHori = new boolean[sizeY - 1][sizeX];
+        eHori = new boolean[sizeX - 1][sizeY];
+        eVert = new boolean[sizeX][sizeY - 1];
         boxes = new short[sizeY - 1][sizeX - 1]; // short representing the amount of edges filled in at a box
         fill(eVert, false);
         fill(eHori, false);
