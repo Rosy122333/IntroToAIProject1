@@ -18,7 +18,11 @@ public class main {
   public static void main(String[] args) {
     String groupName = "theWinner";// Can make this an argument or read from a text document
     Game currentGame = new Game(10, 10, groupName);
-    currentGame.setSolver(new HumanSolver());
+    //currentGame.setSolver(new HumanSolver());
+    currentGame.setSolver(new miniSolver());
+
+
+
     loop: while (!(new File("end_game").exists())) {
       // URL pathToPass = main.class.getResource("groupname.pass");
       File passFile = new File(groupName + ".pass");
@@ -48,26 +52,7 @@ public class main {
     return line;
   }
 
-  public static boolean FileFoundInUnder2minutes(String fileName) {
-    Path path1 = Paths.get(fileName);
-    boolean result = Files.exists(path1);
-    long start = System.currentTimeMillis();
-    long end = 0;
-    boolean TwoMin = false;
-    while (result != true && (TwoMin == false)) {
-      result = Files.exists(path1);
-      end = System.currentTimeMillis();
-      // System.out.println(end-start);
-      if ((end - start) > 10000) {
-        TwoMin = true;
-      }
-    }
-    if (TwoMin) {
-      System.out.print("Could not find the file in under 10 seconds");
-      return false;
-    }
-    return true;
-  }
+  
 
   public static boolean FileFound(String fileName) {
     Path path1 = Paths.get(fileName);

@@ -117,10 +117,15 @@ public class miniSolver extends Solver {
         boolean currPlayer;
         Board currBoard;
         int currScore;
+
+        long oldTime = System.nanoTime(); //added in 
+        long timeOut = 980000000; //added in
+
         queue.add(root);
         queue.add(levelNode);
         boolean referencePlayer = in.currentBoard.isMyTurn;
         do {
+            if((System.nanoTime() - oldTime) > timeOut) break; //added in
             TreeNode currentNode = queue.remove();
             if (currentNode != levelNode) {
                 stack.add(currentNode);
