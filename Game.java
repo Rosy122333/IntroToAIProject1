@@ -91,6 +91,7 @@ public class Game {
 
     public void takeMove(Edge moveToTake) {
         // edges.add(moveToTake);
+        currentBoard.addMove(moveToTake);
         writeToFile(moveToTake);
 
     }
@@ -103,7 +104,7 @@ public class Game {
 
     public void handlePass() {
         // readMove();
-        writeStringToFile(groupname + "0,0 0,0");
+        writeStringToFile(groupname + " 0,0 0,0");
         sleepForRef();
     }
 

@@ -23,4 +23,10 @@ public class Edge {
     public String toString() { // Given the Move -> return the printable value
         return " " + (x + "," + y) + " " + (isHorizontal ? ((x + 1) + "," + y) : (x + "," + (y + 1)));
     }
+
+    @Override
+    public boolean equals(Object edge) {
+        Edge e = (Edge) edge;
+        return (e.x == x && e.y == y && e.isHorizontal == isHorizontal);
+    }
 }
