@@ -2,7 +2,7 @@
 /**
  *
  */
-public class Edge{
+public class Edge {
 
     boolean isHorizontal;
     int x;
