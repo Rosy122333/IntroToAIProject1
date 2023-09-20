@@ -17,7 +17,7 @@ public class Board {
         fill(eHori, false);
         fill(boxes, (short) 0);
         isMyTurn = true;
-        relativeScore =0;
+        relativeScore = 0;
         allPossibleMoves = availableMoves(this);
     }
 
@@ -43,55 +43,51 @@ public class Board {
                 array[i][j] = val;
     }
 
-
     public void addMove(Edge move) {
         int x = move.x;
         int y = move.y;
         allPossibleMoves.remove(move);
         if (move.isHorizontal) {
             eHori[x][y] = true;
-            if (++boxes[x][y] == 4){
+            if ((y != (Game.height - 1)) && ++boxes[x][y] == 4) {
                 incrementRelativeScore();
             }
-            if ( y - 1 >= 0 && ++boxes[x][y - 1]  == 4){
+            if (y - 1 >= 0 && ++boxes[x][y - 1] == 4) {
                 incrementRelativeScore();
             }
         } else {
             eVert[x][y] = true;
-            if (++boxes[x][ y] == 4) {
+            if ((x != (Game.width - 1)) && ++boxes[x][y] == 4) {
                 incrementRelativeScore();
             }
-            if(( x - 1 >= 0) && ++boxes[x-1][y] == 4) {
+            if ((x - 1 >= 0) && ++boxes[x - 1][y] == 4) {
                 incrementRelativeScore();
-            };
-    }
+            }
+            ;
+        }
     }
 
-
-    public static Edge makeEdge(int x1,int y1, int x2, int y2){
+    public static Edge makeEdge(int x1, int y1, int x2, int y2) {
         Edge toReturn;
         boolean hori = (y1 == y2);
-        if(hori){
-            toReturn = new Edge(hori, (x1 < x2 ? x1 : x2) ,y1);
-        }
-        else{
-            toReturn = new Edge(hori, x1 , (y1 < y2 ? y1 : y2));
+        if (hori) {
+            toReturn = new Edge(hori, (x1 < x2 ? x1 : x2), y1);
+        } else {
+            toReturn = new Edge(hori, x1, (y1 < y2 ? y1 : y2));
         }
         return toReturn;
     }
 
-
-    public void incrementRelativeScore(){
+    public void incrementRelativeScore() {
         relativeScore += isMyTurn ? 1 : -1;
     }
 
-
     public ArrayList<Edge> availableMovesHelper(boolean[][] board, boolean isHorizontal) {
         ArrayList<Edge> moves = new ArrayList<Edge>();
-        for (int i = 0; i < board.length; i++) { //rows or eVert
-            for (int j = 0; j < board[i].length; j++) { //number of colmns at row i
+        for (int i = 0; i < board.length; i++) { // rows or eVert
+            for (int j = 0; j < board[i].length; j++) { // number of colmns at row i
                 if (board[i][j] == false) {
-                    moves.add(new Edge(isHorizontal,i,j));
+                    moves.add(new Edge(isHorizontal, i, j));
                 }
             }
         }
@@ -107,5 +103,4 @@ public class Board {
         return moves;
     }
 
-    
 }
