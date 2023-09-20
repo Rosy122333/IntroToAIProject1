@@ -23,7 +23,6 @@ public class Game {
         s = in;
     }
 
-
     // public boolean isAlrOnBoard(Edge e) {
     // for (Edge edge : edges) {
     // if (edge.equals(e)) {
@@ -57,7 +56,7 @@ public class Game {
         }
         ;
 
-        if (move==null)
+        if (move == null)
             return;
         String[] moveData = move.split("([ ,])+");
         // GroupName would be moveData[0]
@@ -65,9 +64,10 @@ public class Game {
         int n1Y = Integer.parseInt(moveData[2]);
         int n2X = Integer.parseInt(moveData[3]);
         int n2Y = Integer.parseInt(moveData[4]);
-        if (n1X == 0 && n1Y == 0 & n2X == 0 && n2Y == 0) return; // In case of pass move -> do nothing
+        if (n1X == 0 && n1Y == 0 & n2X == 0 && n2Y == 0)
+            return; // In case of pass move -> do nothing
         // edges.add(new Edge(new Node(n1X, n1Y), new Node(n2X, n2Y)));
-        
+
     }
 
     public void writeToFile(Edge moveToTake) {
@@ -75,12 +75,12 @@ public class Game {
         writeStringToFile(toWrite);
     }
 
-
     public void writeStringToFile(String toWrite) {
         File moveFile = new File("move_file");
         try (FileWriter moveWriter = new FileWriter(moveFile, false);) {
             moveWriter.write(toWrite);
             moveWriter.close();
+            System.out.println("Writing: " + toWrite);
         } catch (Exception e) {
             e.printStackTrace();
         }

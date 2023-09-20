@@ -21,6 +21,6 @@ public class Edge {
     }
 
     public String toString() { // Given the Move -> return the printable value
-        return (x + "," + y) + " " + (isHorizontal ? ((x + 1) + "," + y) : (x + "," + (y + 1)));
+        return " " + (x + "," + y) + " " + (isHorizontal ? ((x + 1) + "," + y) : (x + "," + (y + 1)));
     }
 }
