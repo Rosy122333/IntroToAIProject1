@@ -77,7 +77,6 @@ public class Board {
             eVert[move.x][move.y] = true;
             if (++boxes[move.x][move.y] == 4) {
                 relativeScore++;
-                if ()
             }
     }
 
