@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="44440a45-2227-4754-9b4e-1572bac53bf7" name="Changes" comment="board methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Board.Java" beforeDir="false" afterPath="$PROJECT_DIR$/Board.Java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main.java" afterDir="false" />
     </list>
     <list id="b2e3a744-864c-4d49-af11-142f97485fc8" name="Changes by Cata" comment="9/19 6:31" />
     <list id="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" name="Changes by eleanorfoley" comment="Changes by eleanorfoley">
@@ -35,6 +37,17 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/Board.java">
+      <ranges>
+        <range start1="60" end1="61" start2="60" end2="61" changelist="44440a45-2227-4754-9b4e-1572bac53bf7" />
+        <range start1="88" end1="89" start2="88" end2="89" changelist="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" />
+        <range start1="91" end1="92" start2="91" end2="92" changelist="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" />
+        <range start1="93" end1="101" start2="93" end2="94" changelist="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" />
+        <range start1="109" end1="111" start2="102" end2="104" changelist="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -72,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1695144951411</updated>
-      <workItem from="1695144952895" duration="15360000" />
+      <workItem from="1695144952895" duration="16358000" />
     </task>
     <task id="LOCAL-00001" summary="editing readMove">
       <option name="closed" value="true" />
@@ -114,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695179758927</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="board methods">
+      <option name="closed" value="true" />
+      <created>1695229899863</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1695229899863</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -58,7 +58,7 @@ public class Board {
             }
         } else {
             eVert[x][y] = true;
-            if (++boxes[ x][ y] == 4) {
+            if (++boxes[x][ y] == 4) {
                 incrementRelativeScore();
             }
             if(( x - 1 >= 0) && ++boxes[x-1][y] == 4) {
