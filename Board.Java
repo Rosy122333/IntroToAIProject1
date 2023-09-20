@@ -47,6 +47,7 @@ public class Board {
     public void addMove(Edge move) {
         int x = move.x;
         int y = move.y;
+        allPossibleMoves.remove(move);
         if (move.isHorizontal) {
             eHori[x][y] = true;
             if (++boxes[x][y] == 4){
