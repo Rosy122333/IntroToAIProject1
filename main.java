@@ -17,7 +17,7 @@ public class main {
 
   public static void main(String[] args) {
     String groupName = "theWinner";// Can make this an argument or read from a text document
-    Game currentGame = new Game(10, 10, new ArrayList<Edge>(81 * 4), groupName);
+    Game currentGame = new Game(10, 10, groupName);
     currentGame.setSolver(new HumanSolver());
     loop: while (!(new File("end_game").exists())) {
       // URL pathToPass = main.class.getResource("groupname.pass");

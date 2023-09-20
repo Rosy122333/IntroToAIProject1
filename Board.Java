@@ -43,41 +43,45 @@ public class Board {
                 array[i][j] = val;
     }
 
-    public void addMove(Edge in){
-        int x = in.x;
-        int y = in.y;
-            if(in.isHorizontal){
-                eHori[x][y] = true;
-                boxes[x][y]+=1;
-                if(y-1 >=0){
-                    boxes[x][y-1]+=1;
-                }
-            }
-            else{
-                eVert[x][y] = true;
-                if(++boxes[x][y] == 4)
-                    relativeScore += ();
-
-
-                if(x-1 >=0){
-                    boxes[x-1][y]+=1;
-                }
-            }
-
-    }
 
     public void addMove(Edge move) {
+        int x = move.x;
+        int y = move.y;
         if (move.isHorizontal) {
-            eHori[move.x][move.y] = true;
-            boxes[move.x][move.y] += 1;
-            if (move.y - 1 >= 0) {
-                boxes[move.x][move.y - 1] += 1;
+            eHori[x][y] = true;
+            if (++boxes[x][y] == 4){
+                incrementRelativeScore();
+            }
+            if ( y - 1 >= 0 && ++boxes[x][y - 1]  == 4){
+                incrementRelativeScore();
             }
         } else {
-            eVert[move.x][move.y] = true;
-            if (++boxes[move.x][move.y] == 4) {
-                relativeScore++;
+            eVert[x][y] = true;
+            if (++boxes[ x][ y] == 4) {
+                incrementRelativeScore();
             }
+            if(( x - 1 >= 0) && ++boxes[x-1][y] == 4) {
+                incrementRelativeScore();
+            };
+    }
+    }
+
+
+    public static Edge makeEdge(int x1,int y1, int x2, int y2){
+        Edge toReturn;
+        boolean hori = (y1 == y2);
+        if(hori){
+            toReturn = new Edge(hori, (x1 < x2 ? x1 : x2) ,y1);
+        }
+        else{
+            toReturn = new Edge(hori, x1 , (y1 < y2 ? y1 : y2));
+        }
+        return toReturn;
+    }
+
+
+    public void incrementRelativeScore(){
+        relativeScore += isMyTurn ? 1 : -1;
     }
 
 
@@ -109,4 +113,5 @@ public class Board {
         return moves;
     }
 
+    
 }
