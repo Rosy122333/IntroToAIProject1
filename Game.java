@@ -57,7 +57,7 @@ public class Game {
         }
         ;
 
-        if (move == null)
+        if (move==null)
             return;
         String[] moveData = move.split("([ ,])+");
         // GroupName would be moveData[0]
@@ -94,7 +94,7 @@ public class Game {
 
     public void handleGo() {
         readMove();
-        takeMove(s.getBestMove(this));
+        takeMove(s.getBestMove(this)); //
         sleepForRef();
     }
 
