@@ -1,5 +1,6 @@
 import java.io.*;
 // import java.util.ArrayList;
+import java.util.Iterator;
 
 // import static java.lang.Thread.sleep;
 
@@ -66,7 +67,9 @@ public class Game {
         int n2Y = Integer.parseInt(moveData[4]);
         if (n1X == 0 && n1Y == 0 & n2X == 0 && n2Y == 0)
             return; // In case of pass move -> do nothing
-        // edges.add(new Edge(new Node(n1X, n1Y), new Node(n2X, n2Y)));
+        Edge madeMove = Board.makeEdge(n1X, n1Y, n2X, n2Y);
+        System.out.println("Reading: " + madeMove);
+        currentBoard.addMove(madeMove);
 
     }
 
