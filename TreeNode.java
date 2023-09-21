@@ -8,10 +8,9 @@ public class TreeNode {
     private boolean player;
     static int MIN = -10000000;
 
-    public TreeNode(Board board, TreeNode parent, boolean player, Edge move) {
+    public TreeNode(Board board, TreeNode parent, Edge move) {
         this.board = board;
         this.parent = parent;
-        this.player = player;
         this.move = move;
         this.utility = MIN;
          }

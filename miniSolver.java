@@ -112,25 +112,26 @@ public class miniSolver extends Solver {
         LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
         LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
         ArrayList<Edge> moves = in.currentBoard.allPossibleMoves;
-        TreeNode root = new TreeNode(in.currentBoard, null, in.currentBoard.isMyTurn, null);
+        TreeNode root = new TreeNode(in.currentBoard, null, null);
         TreeNode levelNode = null;
-        boolean currPlayer;
+        // boolean currPlayer;
         Board currBoard;
         int currScore;
 
-        long oldTime = System.nanoTime(); //added in 
-        long timeOut = 980000000; //added in
+        long oldTime = System.currentTimeMillis(); //added in 
+        long timeOut = 1000 * 10; //added in
 
         queue.add(root);
         queue.add(levelNode);
-        boolean referencePlayer = in.currentBoard.isMyTurn;
+        // boolean referencePlayer = in.currentBoard.isMyTurn;
         do {
-            if((System.nanoTime() - oldTime) > timeOut) break; //added in
+            if((System.currentTimeMillis() - oldTime) > timeOut)
+                 break; //added in
             TreeNode currentNode = queue.remove();
             if (currentNode != levelNode) {
                 stack.add(currentNode);
                 currBoard = currentNode.getBoard();
-                currPlayer = currBoard.isMyTurn; //true if my turn, false if enemy turn :)
+                // currPlayer = currBoard.isMyTurn; //true if my turn, false if enemy turn :)
                 currScore = currBoard.relativeScore;
                 moves = currBoard.allPossibleMoves;
                 Collections.shuffle(moves);
@@ -140,10 +141,10 @@ public class miniSolver extends Solver {
                     child.addMove(e);
                     int newScore = child.relativeScore;
                     if (newScore == currScore) {
-                        child.isMyTurn = !currPlayer;
-                        queue.add(new TreeNode(child, currentNode, !currPlayer, e));
+                        child.isMyTurn = !child.isMyTurn;
+                        queue.add(new TreeNode(child, currentNode, e));
                     } else{
-                    queue.add(new TreeNode(child, currentNode, currPlayer, e));
+                    queue.add(new TreeNode(child, currentNode, e));
                     }
                 }
             } else {
@@ -163,7 +164,7 @@ public class miniSolver extends Solver {
                 if (TreeNode.MIN == currUtility)
                     currNode.setUtility(heuristicFunction(currNode.getBoard()));
                 currUtility = currNode.getUtility();
-                if (parentNode.getPlayer() == referencePlayer) {
+                if (parentNode.getPlayer() == true) {
                     if (currUtility > parentNode.getUtility()) {
                         parentNode.setUtility(currUtility);
                         if (parentNode == root)
