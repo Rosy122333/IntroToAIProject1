@@ -106,7 +106,7 @@ public class Game {
     }
 
     public void handlePass() {
-        // readMove();
+        readMove();
         writeStringToFile(groupname + " 0,0 0,0");
         sleepForRef();
     }
