@@ -17,11 +17,9 @@ public class main {
 
   public static void main(String[] args) {
     String groupName = "theWinner";// Can make this an argument or read from a text document
-    Game currentGame = new Game(2, 2, groupName);
-    //currentGame.setSolver(new HumanSolver());
+    Game currentGame = new Game(3, 3, groupName);
+    // currentGame.setSolver(new HumanSolver());
     currentGame.setSolver(new miniSolver());
-
-
 
     loop: while (!(new File("end_game").exists())) {
       // URL pathToPass = main.class.getResource("groupname.pass");
@@ -51,8 +49,6 @@ public class main {
     br.close();
     return line;
   }
-
-  
 
   public static boolean FileFound(String fileName) {
     Path path1 = Paths.get(fileName);

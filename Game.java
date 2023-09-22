@@ -90,7 +90,7 @@ public class Game {
     }
 
     public void takeMove(Edge moveToTake) {
-        // edges.add(moveToTake);
+
         currentBoard.addMove(moveToTake);
         writeToFile(moveToTake);
 
