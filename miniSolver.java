@@ -111,6 +111,7 @@ public class miniSolver extends Solver {
 
     @Override // unsure if we need the override
     public Edge getBestMove(Game in) {
+        in.currentBoard.relativeScore = 0;
         LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
         LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
         ArrayList<Edge> moves = in.currentBoard.allPossibleMoves;
@@ -141,9 +142,8 @@ public class miniSolver extends Solver {
                 for (Edge e : moves) {
                     Board child = currBoard.clone();
                     child.addMove(e);
-                    int newScore = child.relativeScore;
+                    int newScore = heuristicFunction(child);
                     if (newScore == currScore) {
-                        child.isMyTurn = !child.isMyTurn;
                         queue.add(new TreeNode(child, currentNode, e, true));
                     } else {
                         queue.add(new TreeNode(child, currentNode, e, false));
@@ -161,12 +161,13 @@ public class miniSolver extends Solver {
         do {
             TreeNode currNode = stack.removeLast();
             TreeNode parentNode = currNode.getParent();
+
+            if (TreeNode.MIN == currNode.getUtility())
+                currNode.setUtility(heuristicFunction(currNode.getBoard()));
+
             int currUtility = currNode.getUtility();
 
-            if (TreeNode.MIN == currUtility)
-                currNode.setUtility(heuristicFunction(currNode.getBoard()));
-            currUtility = currNode.getUtility();
-            if (parentNode.getPlayer() == true) {
+            if (parentNode.getPlayer()) {
                 if (currUtility > parentNode.getUtility()) {
                     parentNode.setUtility(currUtility);
                     if (parentNode == root)
@@ -180,6 +181,7 @@ public class miniSolver extends Solver {
             }
         } while (stack.size() != 1);
         System.out.println("Utility of Root: " + root.getUtility());
+        // in.takeMove(root.getEdge());
         return root.getEdge();
     }
 }

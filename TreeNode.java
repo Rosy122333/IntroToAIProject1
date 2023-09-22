@@ -5,7 +5,6 @@ public class TreeNode {
     private TreeNode parent;
     private Edge move;
     private int utility;
-    private boolean player;
     static int MIN = -10000000;
 
     public TreeNode(Board board, TreeNode parent, Edge move, boolean changeTurn) {

@@ -59,6 +59,7 @@ public class Board {
     public void addMove(Edge move) {
         int x = move.x;
         int y = move.y;
+        // System.out.println("Move : " + move + "| hasBeenRemoved: " +
         allPossibleMoves.remove(move);
         if (move.isHorizontal) {
             eHori[x][y] = true;
@@ -76,7 +77,7 @@ public class Board {
             if ((x - 1 >= 0) && ++boxes[x - 1][y] == 4) {
                 incrementRelativeScore();
             }
-            ;
+
         }
     }
 
@@ -92,7 +93,13 @@ public class Board {
     }
 
     public void incrementRelativeScore() {
-        relativeScore += isMyTurn ? 1 : -1;
+        if (isMyTurn) {
+            relativeScore++;
+        } else {
+            relativeScore--;
+        }
+
+        // relativeScore += isMyTurn ? 1 : -1;
     }
 
     public ArrayList<Edge> availableMovesHelper(boolean[][] board, boolean isHorizontal) {
