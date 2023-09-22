@@ -176,7 +176,7 @@ public class miniSolver extends Solver {
                     // System.out.println("The Utility of rootNode should now be" + currUtility);
                 }
             } else {
-                if (currUtility < parentNode.getUtility())
+                if (currUtility < parentNode.getUtility() || parentNode.getUtility() == TreeNode.MIN)
                     parentNode.setUtility(currUtility);
             }
         } while (stack.size() != 1);
