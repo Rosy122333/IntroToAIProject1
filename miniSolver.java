@@ -179,7 +179,7 @@ public class miniSolver extends Solver {
                     parentNode.setUtility(currUtility);
             }
         } while (stack.size() != 1);
-        System.out.println("The Utility of rootNode should now be" + root.getUtility());
+        System.out.println("Utility of Root: " + root.getUtility());
         return root.getEdge();
     }
 }

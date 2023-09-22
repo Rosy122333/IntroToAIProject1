@@ -61,6 +61,8 @@ public class Game {
             return;
         String[] moveData = move.split("([ ,])+");
         // GroupName would be moveData[0]
+        if (moveData[0] == groupname)
+            return;
         int n1X = Integer.parseInt(moveData[1]);
         int n1Y = Integer.parseInt(moveData[2]);
         int n2X = Integer.parseInt(moveData[3]);
@@ -87,6 +89,7 @@ public class Game {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(currentBoard.allPossibleMoves.toString());
     }
 
     public void takeMove(Edge moveToTake) {

@@ -28,6 +28,7 @@ public class Board {
         cloneArr(eHori, toReturn.eHori);
         toReturn.isMyTurn = isMyTurn;
         toReturn.relativeScore = relativeScore;
+        toReturn.allPossibleMoves = (ArrayList<Edge>) allPossibleMoves.clone();
         return toReturn;
     }
 
