@@ -24,28 +24,6 @@ public class Game {
         s = in;
     }
 
-    // public boolean isAlrOnBoard(Edge e) {
-    // for (Edge edge : edges) {
-    // if (edge.equals(e)) {
-    // return true;
-    // }
-    // }
-    // return false;
-    // }
-
-    // public boolean isLegal(Edge e) {
-    // if (isOnBoard(e) && !isAlrOnBoard(e))
-    // return edges.add(e);
-    // return false;
-    // }
-    // currently unused
-    // public boolean isLegal(Edge e) {
-    // if (isOnBoard(e) && !isAlrOnBoard(e))
-
-    // want to add this correctly ***STOPPED HERE STILL NEED TO FIX THE MAIN AS WELL
-    // return edges.add(e);
-    // return false;
-    // }
 
     public void readMove() {
         String move = "";

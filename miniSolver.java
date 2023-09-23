@@ -13,7 +13,7 @@ public class miniSolver extends Solver {
      * Until at which point it will compute the heuristics of the leaf nodes
      * And compute the minima and maxima for each non-leaf node
      * until it collapses into the root node
-     * following which the best move the root node has seen will be returned
+     * following which the best move the root node has seen will be returned in form Edge
      */
     @Override
     public Edge getBestMove(Game in) {
