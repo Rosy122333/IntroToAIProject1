@@ -17,7 +17,7 @@ public class main {
 
   public static void main(String[] args) {
     String groupName = "human";// Can make this an argument or read from a text document
-    Game currentGame = new Game(3, 3, groupName);
+    Game currentGame = new Game(5, 5, groupName);
     // currentGame.setSolver(new HumanSolver());
     currentGame.setSolver(new miniSolver());
 
