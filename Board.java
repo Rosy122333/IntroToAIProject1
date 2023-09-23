@@ -103,4 +103,51 @@ public class Board {
         return moves;
     }
 
-}
+    public int countChains() {
+        int count = 0;
+        for (int i = 0; i < boxes.length; i++) {
+            for (int j = 0; j < boxes[i].length; j++) {
+                if (boxes[i][j] == 3) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+// counts number of immediate closings available to the  player
+    public int findClosings() {
+        int count = 0;
+        int rows = eHori.length;
+        int cols = eVert.length;
+        for (int i = 0; i < rows - 1; i++) {
+            for (int j = 0; j < cols - 1; j++) {
+                if (boxes[i][j] == 3) {
+                    count++;
+                }
+            }
+        }
+        return count;
+     }
+// counts the number of chains that are available to the player
+    public int chainControl() {
+        int rows = eHori.length;
+        int cols = eVert.length;
+        int count = 0;
+            return count;
+    }
+
+
+    public int calculateEdgeParity(Game currentGame) {
+        return (currentGame.scoreMax - currentGame.scoreMin) % 2 == 0 ? 1 : -1;
+    }
+
+    public int calculateMobility(Game currentGame) {
+        return allPossibleMoves.size();
+    }
+
+    
+ }
+
+
+

@@ -119,7 +119,7 @@ public class miniSolver extends Solver {
         int currScore;
 
         long oldTime = System.nanoTime(); //added in 
-        long timeOut = 980000000; //added in
+        long timeOut = 999999999; //added in
 
         queue.add(root);
         queue.add(levelNode);

@@ -68,7 +68,7 @@ public class Game {
         if (n1X == 0 && n1Y == 0 & n2X == 0 && n2Y == 0)
             return; // In case of pass move -> do nothing
         Edge madeMove = Board.makeEdge(n1X, n1Y, n2X, n2Y);
-        System.out.println("Reading: " + madeMove);
+        System.out.println("Reading: " + groupname + " " + madeMove);
         currentBoard.addMove(madeMove);
 
     }
@@ -104,7 +104,7 @@ public class Game {
 
     public void handlePass() {
         // readMove();
-        writeStringToFile(groupname + " 0,0 0,0");
+        writeStringToFile("Passing: " + groupname + " 0,0 0,0");
         sleepForRef();
     }
 
