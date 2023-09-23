@@ -24,28 +24,6 @@ public class Game {
         s = in;
     }
 
-    // public boolean isAlrOnBoard(Edge e) {
-    // for (Edge edge : edges) {
-    // if (edge.equals(e)) {
-    // return true;
-    // }
-    // }
-    // return false;
-    // }
-
-    // public boolean isLegal(Edge e) {
-    // if (isOnBoard(e) && !isAlrOnBoard(e))
-    // return edges.add(e);
-    // return false;
-    // }
-    // currently unused
-    // public boolean isLegal(Edge e) {
-    // if (isOnBoard(e) && !isAlrOnBoard(e))
-
-    // want to add this correctly ***STOPPED HERE STILL NEED TO FIX THE MAIN AS WELL
-    // return edges.add(e);
-    // return false;
-    // }
 
     public void readMove() {
         String move = "";
@@ -61,6 +39,8 @@ public class Game {
             return;
         String[] moveData = move.split("([ ,])+");
         // GroupName would be moveData[0]
+        if (moveData[0] == groupname)
+            return;
         int n1X = Integer.parseInt(moveData[1]);
         int n1Y = Integer.parseInt(moveData[2]);
         int n2X = Integer.parseInt(moveData[3]);
@@ -68,7 +48,7 @@ public class Game {
         if (n1X == 0 && n1Y == 0 & n2X == 0 && n2Y == 0)
             return; // In case of pass move -> do nothing
         Edge madeMove = Board.makeEdge(n1X, n1Y, n2X, n2Y);
-        System.out.println("Reading: " + groupname + " " + madeMove);
+        System.out.println("Reading: " + madeMove);
         currentBoard.addMove(madeMove);
 
     }
@@ -87,10 +67,11 @@ public class Game {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(currentBoard.allPossibleMoves.toString());
     }
 
     public void takeMove(Edge moveToTake) {
-        // edges.add(moveToTake);
+
         currentBoard.addMove(moveToTake);
         writeToFile(moveToTake);
 
@@ -103,8 +84,8 @@ public class Game {
     }
 
     public void handlePass() {
-        // readMove();
-        writeStringToFile("Passing: " + groupname + " 0,0 0,0");
+        readMove();
+        writeStringToFile(groupname + " 0,0 0,0");
         sleepForRef();
     }
 

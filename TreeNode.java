@@ -5,25 +5,26 @@ public class TreeNode {
     private TreeNode parent;
     private Edge move;
     private int utility;
-    private boolean player;
     static int MIN = -10000000;
 
-    public TreeNode(Board board, TreeNode parent, boolean player, Edge move) {
+    public TreeNode(Board board, TreeNode parent, Edge move, boolean changeTurn) {
         this.board = board;
         this.parent = parent;
-        this.player = player;
         this.move = move;
         this.utility = MIN;
-         }
+        board.isMyTurn = changeTurn ? !board.isMyTurn : board.isMyTurn;
+    }
 
     public Board getBoard() {
         return board;
     }
+
     public TreeNode getParent() {
         return parent;
     }
+
     public boolean getPlayer() {
-        return player;
+        return board.isMyTurn;
     }
 
     public int getUtility() {
@@ -31,14 +32,14 @@ public class TreeNode {
     }
 
     public void setUtility(int utility) {
-        this.utility = utility ;
+        this.utility = utility;
     }
 
     public Edge getEdge() {
-        return this.move ;
+        return this.move;
     }
 
     public void setEdge(Edge edge) {
-        this.move = edge ;
+        this.move = edge;
     }
 }

@@ -23,11 +23,12 @@ public class Board {
 
     public Board clone() {
         Board toReturn = new Board(Game.width, Game.height);
-        toReturn.boxes = this.boxes.clone();
-        toReturn.eVert = this.eVert.clone();
-        toReturn.eHori = this.eHori.clone();
+        cloneArr(boxes, toReturn.boxes);
+        cloneArr(eVert, toReturn.eVert);
+        cloneArr(eHori, toReturn.eHori);
         toReturn.isMyTurn = isMyTurn;
         toReturn.relativeScore = relativeScore;
+        toReturn.allPossibleMoves = (ArrayList<Edge>) allPossibleMoves.clone();
         return toReturn;
     }
 
@@ -43,9 +44,22 @@ public class Board {
                 array[i][j] = val;
     }
 
+    private void cloneArr(boolean[][] array, boolean[][] cloningTo) {
+        for (int i = 0; i < array.length; i++)
+            for (int j = 0; j < array[i].length; j++)
+                cloningTo[i][j] = array[i][j];
+    }
+
+    private void cloneArr(short[][] array, short[][] cloningTo) {
+        for (int i = 0; i < array.length; i++)
+            for (int j = 0; j < array[i].length; j++)
+                cloningTo[i][j] = array[i][j];
+    }
+
     public void addMove(Edge move) {
         int x = move.x;
         int y = move.y;
+        // System.out.println("Move : " + move + "| hasBeenRemoved: " +
         allPossibleMoves.remove(move);
         if (move.isHorizontal) {
             eHori[x][y] = true;
@@ -63,7 +77,7 @@ public class Board {
             if ((x - 1 >= 0) && ++boxes[x - 1][y] == 4) {
                 incrementRelativeScore();
             }
-            ;
+
         }
     }
 
@@ -79,7 +93,13 @@ public class Board {
     }
 
     public void incrementRelativeScore() {
-        relativeScore += isMyTurn ? 1 : -1;
+        if (isMyTurn) {
+            relativeScore++;
+        } else {
+            relativeScore--;
+        }
+
+        // relativeScore += isMyTurn ? 1 : -1;
     }
 
     public ArrayList<Edge> availableMovesHelper(boolean[][] board, boolean isHorizontal) {
