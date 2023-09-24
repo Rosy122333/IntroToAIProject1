@@ -16,10 +16,10 @@ import java.lang.*;
 public class main {
 
   public static void main(String[] args) {
-    String groupName = "human";// Can make this an argument or read from a text document
+    String groupName = "theWinner";// Can make this an argument or read from a text document
     Game currentGame = new Game(5, 5, groupName);
     // currentGame.setSolver(new HumanSolver());
-    currentGame.setSolver(new miniSolver());
+    currentGame.setSolver(new alphaBetaSolver());
 
     loop: while (!(new File("end_game").exists())) {
       // URL pathToPass = main.class.getResource("groupname.pass");

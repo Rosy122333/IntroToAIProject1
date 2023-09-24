@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44440a45-2227-4754-9b4e-1572bac53bf7" name="Changes" comment="board methods">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Board.Java" beforeDir="false" afterPath="$PROJECT_DIR$/Board.Java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Edge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/miniSolver.java" afterDir="false" />
     </list>
     <list id="b2e3a744-864c-4d49-af11-142f97485fc8" name="Changes by Cata" comment="9/19 6:31" />
-    <list id="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" name="Changes by eleanorfoley" comment="Changes by eleanorfoley">
-      <change beforePath="$PROJECT_DIR$/Board.Java" beforeDir="false" afterPath="$PROJECT_DIR$/Board.Java" afterDir="false" />
-    </list>
+    <list id="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" name="Changes by eleanorfoley" comment="Changes by eleanorfoley" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,23 +34,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/Board.java">
-      <ranges>
-        <range start1="60" end1="61" start2="60" end2="61" changelist="44440a45-2227-4754-9b4e-1572bac53bf7" />
-        <range start1="88" end1="89" start2="88" end2="89" changelist="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" />
-        <range start1="91" end1="92" start2="91" end2="92" changelist="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" />
-        <range start1="93" end1="101" start2="93" end2="94" changelist="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" />
-        <range start1="109" end1="111" start2="102" end2="104" changelist="a2fdbb9b-188d-497b-8dc0-2622bb29bad9" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
   <component name="ProjectId" id="2VcouOu0Dhm2rTlu1SMTGYoNyu5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -62,21 +44,11 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "AP-gametree",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Cata\Documents\GitHub\IntroToAIProject1\src" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -158,5 +130,16 @@
     <MESSAGE value="9/19 6:31" />
     <MESSAGE value="board methods" />
     <option name="LAST_COMMIT_MESSAGE" value="board methods" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Game.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
