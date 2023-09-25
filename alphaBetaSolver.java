@@ -12,13 +12,19 @@ public class alphaBetaSolver extends Solver {
     @Override
     public Edge getBestMove(Game in) {
         timeStarted = System.currentTimeMillis();
-        return this.depthFirstSearch(in.currentBoard, MIN, MAX, depthLevelMax).edge;
+        Bound out = this.depthFirstSearch(in.currentBoard, MIN, MAX, depthLevelMax);
+        System.out.println("Utility:" + out.utility);
+        return out.edge;
     }
 
-    public Bound depthFirstSearch(Board in, int alpha, int beta, short depthLeft) {
+    public Bound depthFirstSearch(Board in, int alpha, int beta, int depthLeft) {
         int movesLeft = in.allPossibleMoves.size();
-        if (depthLeft <= 0 || (System.currentTimeMillis() - timeStarted >= boundedTime) || (movesLeft == 0))
+        System.out.println("Depth:" + depthLeft);
+        boolean outOfTime = (System.currentTimeMillis() - timeStarted >= boundedTime) && false;
+        if (depthLeft < 0 || outOfTime || (movesLeft == 0)) {
+            System.out.println("DFS hit bounds" + heuristicFunction(in));
             return new Bound(null, heuristicFunction(in));
+        }
 
         Collections.shuffle(in.allPossibleMoves);
 
@@ -33,7 +39,7 @@ public class alphaBetaSolver extends Solver {
                 workingBoard.isMyTurn = !workingBoard.isMyTurn;
                 flag = true;
             }
-            Bound workingBound = depthFirstSearch(workingBoard, alpha, beta, --depthLeft);
+            Bound workingBound = depthFirstSearch(workingBoard, alpha, beta, (depthLeft - 1));
 
             int workingUtility = workingBound.utility;
 
@@ -43,8 +49,14 @@ public class alphaBetaSolver extends Solver {
             }
 
             if (flag)
-                if (in.isMyTurn ? workingUtility >= beta : workingUtility <= alpha)
+                if (in.isMyTurn ? workingUtility <= beta : workingUtility >= alpha)
                     return boundOut;
+
+            if (in.isMyTurn) {
+                alpha = Math.max(alpha, boundOut.utility);
+            } else {
+                beta = Math.min(beta, boundOut.utility);
+            }
 
         }
 
