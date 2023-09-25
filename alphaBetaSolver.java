@@ -7,7 +7,7 @@ public class alphaBetaSolver extends Solver {
     final static int MIN = -1000000000, MAX = 1000000000;
     long timeStarted;
     long boundedTime = 9 * 1070;
-    short depthLevelMax = 2;
+    short depthLevelMax = 4;
 
     @Override
     public Edge getBestMove(Game in) {
@@ -18,9 +18,10 @@ public class alphaBetaSolver extends Solver {
     }
 
     public Bound depthFirstSearch(Board in, int alpha, int beta, int depthLeft) {
+        System.out.println("[" + alpha + "," + beta + "]");
         int movesLeft = in.allPossibleMoves.size();
         System.out.println("Depth:" + depthLeft);
-        boolean outOfTime = (System.currentTimeMillis() - timeStarted >= boundedTime) && false;
+        boolean outOfTime = (System.currentTimeMillis() - timeStarted >= boundedTime);
         if (depthLeft < 0 || outOfTime || (movesLeft == 0)) {
             System.out.println("DFS hit bounds" + heuristicFunction(in));
             return new Bound(null, heuristicFunction(in));
@@ -48,14 +49,22 @@ public class alphaBetaSolver extends Solver {
                 boundOut.edge = in.allPossibleMoves.get(i);
             }
 
-            if (flag)
-                if (in.isMyTurn ? workingUtility <= beta : workingUtility >= alpha)
-                    return boundOut;
+            System.out.println("Above is a " + (in.isMyTurn ? "Maximizing" : "Minimizing")
+                    + "Node| Child Utility is " + workingUtility);
+            System.out.println("[" + alpha + "," + beta + "]");
 
+            if (flag) {
+
+                if (in.isMyTurn ? workingUtility > beta : workingUtility < alpha)
+                    return boundOut;
+            }
             if (in.isMyTurn) {
+                System.out.println(
+                        "Changing Alpha : Initial Alpha:" + alpha + " | Boundout.utility: " + boundOut.utility);
                 alpha = Math.max(alpha, boundOut.utility);
             } else {
                 beta = Math.min(beta, boundOut.utility);
+                System.out.println("Changing Beta: Initial Beta:" + alpha + " | Boundout.utility: " + boundOut.utility);
             }
 
         }

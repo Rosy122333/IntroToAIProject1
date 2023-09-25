@@ -102,6 +102,7 @@ public class Game {
     public void handleGo() {
         readMove();
         takeMove(s.getBestMove(this)); //
+        currentBoard.relativeScore = 0;
         sleepForRef();
     }
 
