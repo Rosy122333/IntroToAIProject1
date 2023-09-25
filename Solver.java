@@ -1,14 +1,8 @@
 public abstract class Solver {
 
     protected int heuristicFunction(Board in){
-        return in.relativeScore;
-        // int score = 0;
-        // if (in.countOpenEdges() % 2 == 0) {
-        //     score++;
-        // } else {
-        //     score--;
-        // }
-        // return score;
+        //return in.relativeScore;
+        return in.findClosings() + in.countChainControl() + in.countEdgeOwnership() + in.calculateEdgeOddOrEven() + in.calculateMobility(); 
     }
 
     public abstract Edge getBestMove(Game in);

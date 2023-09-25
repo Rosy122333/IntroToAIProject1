@@ -5,13 +5,13 @@ import java.util.Iterator;
 // import static java.lang.Thread.sleep;
 
 public class Game {
-    String groupname;
     static int width;
     static int height;
     Board currentBoard;
     Solver s;
     int scoreMax;
     int scoreMin;
+    String groupname;
 
     public Game(int width, int height, String groupname) {
         Game.width = width;
