@@ -114,6 +114,10 @@ public class Board {
         return moves;
     }
 
+    public void switchTurn() { //added in switch Turn
+        isMyTurn = !isMyTurn;
+    }
+
     public ArrayList<Edge> availableMoves(Board board) {
         ArrayList<Edge> moves = new ArrayList<Edge>();
         ArrayList<Edge> movesHori = availableMovesHelper(board.eHori, true);

@@ -57,9 +57,11 @@ public class alphaBetaSolver extends Solver {
 		
 		ArrayList<Edge> moves = boardConfiguration.allPossibleMoves;
         int length = moves.size();
+        int count = 0;
         //Collections.shuffle(moves);
 		
 		for (Edge move : moves) {
+            count++;
             //System.out.println("HRERHERERER");
 			//
 			// Copy the current game state
@@ -67,6 +69,7 @@ public class alphaBetaSolver extends Solver {
 			Board newState = boardConfiguration.clone();
 			
 			newState.addMove(move);
+            newState.switchTurn();
 			
 			//
 			// Compute how long to spend looking at each move
@@ -74,7 +77,7 @@ public class alphaBetaSolver extends Solver {
 			long searchTimeLimit = ((TIME_LIMIT_MILLIS - 1000) / (moves.size()));
 			
 			int score = iterativeDeepeningSearch(newState, searchTimeLimit);
-            System.out.println("score"+ score);
+            System.out.println("result from interative deepening search"+ score+ " also the count "+count);
 			
 			//
 			// If the search finds a winning move
@@ -82,15 +85,18 @@ public class alphaBetaSolver extends Solver {
 				return searchResult;
 			} */
 			//
-            length = length - 1;
-			if ((System.currentTimeMillis()- startTime > 9000)||(length==0)) { //break out condition
+            
+			if ((System.currentTimeMillis()- startTime > 9000)) { //break out condition
+                System.out.print("running out of time and sent "+ move.toString());
 				return move; //not getting here
-			}
+			} else if ((count == (length * (length-1) * (length-2)))) { //since depth is two
+                System.out.print("went through all the moves"); //maybe should onlye me moves.length???
+            }
 			
 			if (score > maxScore) { //what is score and maxScore
 				maxScore = score;
 				bestMove = move;
-                System.out.println("score"+ score);
+                System.out.println("bestMove score"+ score);
 			}
 		}
         System.out.println("maxscore"+maxScore);
@@ -115,7 +121,7 @@ public class alphaBetaSolver extends Solver {
 			}
 			
 			int searchResult = search(boardConfiguration, depth, Integer.MIN_VALUE, Integer.MAX_VALUE, currentTime, endTime - currentTime);
-			
+			System.out.println("search results are as follows "+ searchResult);
 			//
 			// If the search finds a winning move, stop searching
 			//searchResult >= winCutoff
@@ -125,7 +131,7 @@ public class alphaBetaSolver extends Solver {
 			
             //!searchCutoff
 			if (!searchCutoff) {
-				score = boardConfiguration.relativeScore;
+				score = searchResult; //HHHHH???
 			}
 			
 			depth++;
@@ -148,7 +154,8 @@ public class alphaBetaSolver extends Solver {
 		long currentTime = System.currentTimeMillis();
 		long elapsedTime = (currentTime - startTime);
 		
-		if (elapsedTime >= timeLimit) {
+        if (System.currentTimeMillis()-startTime > 9000) { //maybe this statement
+		//if (elapsedTime >= timeLimit) {
 			searchCutoff = true;
 		}
 		
@@ -156,7 +163,7 @@ public class alphaBetaSolver extends Solver {
 		// If this is a terminal node or a win for either player, abort the search
 		//
 		if (searchCutoff || (depth == 0) || (moves.size() == 0)) {
-            System.out.println("relative score "+score);
+            //System.out.println("relative score "+score);
 			return score;
 		}
 		
@@ -164,6 +171,7 @@ public class alphaBetaSolver extends Solver {
 			for (Edge move : moves) {
 				Board childState = boardConfiguration.clone();
 				childState.addMove(move);
+                childState.switchTurn();
 
 				alpha = Math.max(alpha, search(childState, depth - 1, alpha, beta, startTime, timeLimit));
 				
@@ -177,6 +185,7 @@ public class alphaBetaSolver extends Solver {
 			for (Edge move : moves) {
 				Board childState = boardConfiguration.clone();
 				childState.addMove(move);
+                childState.switchTurn();
 				
 				beta = Math.min(beta, search(childState, depth - 1, alpha, beta, startTime, timeLimit));
 					
@@ -186,6 +195,7 @@ public class alphaBetaSolver extends Solver {
 			}
 			
 			return beta;
+            
 		}
 	}
 }
