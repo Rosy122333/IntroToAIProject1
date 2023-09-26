@@ -7,67 +7,151 @@ public class alphaBetaSolver extends Solver {
     final static int MIN = -1000000000, MAX = 1000000000;
     long timeStarted;
     long boundedTime = 9 * 1070;
-    short depthLevelMax = 9;
-    int failures = 0;
+    short depthLevelMax = 2;
 
+    private static final int TIME_LIMIT_MILLIS = 9000;
+	
+    boolean searchCutoff;
+    //
+	// should returns the move with the highest score in the end but doesn't due to time running out sometimes
+	//
     @Override
     public Edge getBestMove(Game in) {
-        timeStarted = System.currentTimeMillis();
-        Bound out = this.depthFirstSearch(in.currentBoard, MIN, MAX, depthLevelMax);
-        System.out.println("Utility:" + out.utility);
-        System.out.println("Failures: " + failures);
-        in.currentBoard.relativeScore = 0;
-        return out.edge;
-    }
-
-    Bound depthFirstSearch(Board in, int alpha, int beta, int depthLeft) {
-        boolean isMaximizingParent = in.isMyTurn;
-        int movesLeft = in.allPossibleMoves.size();
-        boolean outOfTime = (System.currentTimeMillis() - timeStarted >= boundedTime);
-        failures = 0;
-
-
-
-        if (depthLeft < 0 || (movesLeft == 0) || outOfTime) {
-            if (outOfTime) ++failures;
-            return new Bound(null, heuristicFunction(in));
-        }             
-
-        Collections.shuffle(in.allPossibleMoves);
-
-        Bound boundOut = new Bound(null, in.isMyTurn ? MIN : MAX);
-        boundOut.edge = in.allPossibleMoves.get(0);
-        for (int i = 0; i < movesLeft; i++) {
-            Board childBoard = in.clone(); // Given a child node
-            childBoard.addMove(in.allPossibleMoves.get(i)); // With an advanced move from the board in
-
-            if (childBoard.relativeScore == in.relativeScore) {// Given that the score has not increased in either
-                                                               // direction the player changes
-                childBoard.isMyTurn = !childBoard.isMyTurn;
-            }
+		long startTime = System.currentTimeMillis();
+        Board boardConfiguration = in.currentBoard;
+		//boolean maximizing = in.currentBoard.isMyTurn;
+		int maxScore = Integer.MIN_VALUE;
+		Edge bestMove = null;
+		
+		ArrayList<Edge> moves = boardConfiguration.allPossibleMoves;
+        int length = moves.size();
+        int count = 0;
+        //Collections.shuffle(moves);
+		
+		for (Edge move : moves) {
+            count++;
+			//
+			// Copy the current game board
+			//
+			Board newState = boardConfiguration.clone();
+			
+			newState.addMove(move);
+            newState.switchTurn();
+			
+			//
+			// Compute how long to spend looking at each move
+			//
+			long searchTimeLimit = ((TIME_LIMIT_MILLIS - 1000) / (moves.size()));
+			
+			int score = iterativeDeepeningSearch(newState, searchTimeLimit);
             
-            if(depthLeft == 4) System.out.println(String.format("Parent Node| a: %d | b: %d",beta,alpha));
-
-            System.out.println((childBoard.isMyTurn ? "MAXIMIZING" : "MINIMIZING") + ": [" + alpha + "," + beta + "]" + "| D:" + depthLeft);
-            Bound childBound = depthFirstSearch(childBoard, alpha, beta, depthLeft - 1); // Perform further
-                                                                                         // depthFirstSearch/ABP with
-                                                                                         // remaining depth
-
-            if (isMaximizingParent) { // Given this node is a maximizing node
-                boundOut.utility = Math.max(boundOut.utility, childBound.utility);
-                alpha = Math.max(alpha, boundOut.utility);
-            } else { // Given this node is a minimizing node
-                boundOut.utility = Math.min(boundOut.utility, childBound.utility);
-                beta = Math.min(beta, boundOut.utility);
+			
+            
+			if ((System.currentTimeMillis()- startTime > 9000)) { //break out condition
+				return move; //not getting here
+			} else if ((count == (length * (length-1) * (length-2)))) { //since depth is two
+               
             }
-            if (beta <= alpha) {
-                boundOut.utility = childBound.utility;
-                // System.out.println("Breaking Condition Met");
-                break;// exit the loop when pruning conditions are met 
-            }
+			
+			if (score > maxScore) { //what is score and maxScore
+				maxScore = score;
+				bestMove = move;
+                
+			}
+		}
+        
+		return bestMove;
+	}
+	
+	//
+	// Run an iterative deepening search on a game state, taking no longrer than the given time limit
+	//
+	private int iterativeDeepeningSearch(Board boardConfiguration, long timeLimit) {
+		long startTime = System.currentTimeMillis();
+		long endTime = startTime + timeLimit;
+		int depth = 3; //1 
+		int score = 0;
+		searchCutoff = false;
+		
+		while (true) {
+			long currentTime = System.currentTimeMillis();
+			
+			if (currentTime >= endTime) {
+				break;
+			}
+			
+			int searchResult = search(boardConfiguration, depth, Integer.MIN_VALUE, Integer.MAX_VALUE, currentTime, endTime - currentTime);
+			
+			if (System.currentTimeMillis()- startTime > 9000) {
+				return searchResult;
+			}
+			
+            //!searchCutoff
+			if (!searchCutoff) {
+				score = searchResult; //HHHHH???
+			}
+			
+			depth++;
+		}
+		
+		return score;
+	}
+	
+	//
+	// search() will perform minimax search with alpha-beta pruning on a game state, and will cut off if the given time
+	// limit has elapsed since the beginning of the search
+	//
+	private int search(Board boardConfiguration, int depth, int alpha, int beta, long startTime, long  timeLimit) {
+		ArrayList<Edge> moves = boardConfiguration.allPossibleMoves;
+        //ArrayList<AIGameMove> moves = state.validMoves();
+		boolean maximizing = boardConfiguration.isMyTurn;
+		int savedScore = (maximizing) ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+		///int score = Evaluator.eval(boardConfiguration);
+        int score = boardConfiguration.relativeScore;
+		long currentTime = System.currentTimeMillis();
+		long elapsedTime = (currentTime - startTime);
+		
+        if (System.currentTimeMillis()-startTime > 9000) { 
+			searchCutoff = true;
+		}
+		
+		//
+		// leave if it's a terminal node or if time elapsed
+		//
+		if (searchCutoff || (depth == 0) || (moves.size() == 0)) {
+           
+			return score;
+		}
+		
+		if (boardConfiguration.isMyTurn) {
+			for (Edge move : moves) {
+				Board childState = boardConfiguration.clone();
+				childState.addMove(move);
+                childState.switchTurn();
 
-        }
-
-        return boundOut;
-    }
+				alpha = Math.max(alpha, search(childState, depth - 1, alpha, beta, startTime, timeLimit));
+				
+				if (beta <= alpha) {
+					break;
+				}
+			}
+			
+			return alpha;
+		} else {
+			for (Edge move : moves) {
+				Board childState = boardConfiguration.clone();
+				childState.addMove(move);
+                childState.switchTurn();
+				
+				beta = Math.min(beta, search(childState, depth - 1, alpha, beta, startTime, timeLimit));
+					
+				if (beta <= alpha) {
+					break;
+				}
+			}
+			
+			return beta;
+            
+		}
+	}
 }
