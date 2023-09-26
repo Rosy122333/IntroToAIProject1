@@ -27,13 +27,14 @@ public class miniSolver extends Solver {
         TreeNode levelNode = null;
         Board currBoard;
         int currScore;
+        int levelsTraversed = 0;
 
         long oldTime = System.currentTimeMillis();
         long timeOut = 1000 * 10;
 
         queue.add(root); // Add the root node to begin filling out the children
         queue.add(levelNode); // This is helpful for debug purposes as it allows for the programmer to see
-                              // when layers have been reached (Seperated by moves taken/ nodes expanded to
+        ++levelsTraversed;    // when layers have been reached (Seperated by moves taken/ nodes expanded to
                               // this point)
         do {
             if ((System.currentTimeMillis() - oldTime) > timeOut) // This breaks us out of the loop if the time limit is
@@ -71,6 +72,7 @@ public class miniSolver extends Solver {
                 }
             } else {
                 queue.add(levelNode);
+                ++levelsTraversed; 
             }
         } while (queue.size() != 0);
 
@@ -113,6 +115,7 @@ public class miniSolver extends Solver {
             }
         } while (stack.size() != 1);
         System.out.println("Utility of Root: " + root.getUtility());
+        System.out.println("Levels Traversed" + levelsTraversed);
         return root.getEdge();
     }
 }

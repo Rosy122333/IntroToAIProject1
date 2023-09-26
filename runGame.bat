@@ -1,1 +1,1 @@
-python3 dots_boxes_referee/referee.py theWinner human --time_limit 999999999999999999
+python dots_boxes_referee/referee.py theWinner human --time_limit 999999999999999999

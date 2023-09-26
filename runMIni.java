@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 public class runMIni {
     public static void main(String[] args) {
         String groupName = "human";// Can make this an argument or read from a text document
-        Game currentGame = new Game(5, 5, groupName);
+        Game currentGame = new Game(3, 3, groupName);
         currentGame.setSolver(new miniSolver());
         loop: while (!(new File("end_game").exists())) {
             // URL pathToPass = main.class.getResource("groupname.pass");
