@@ -49,7 +49,7 @@ public class Game {
 
     public void readMove() {
         String move = "";
-        File moveFile = new File("move_file");
+        File moveFile = new File(main.pathAddition + "move_file");
         try (BufferedReader br = new BufferedReader(new FileReader(moveFile));) {
             move = br.readLine();
         } catch (Exception e) {
@@ -81,7 +81,7 @@ public class Game {
     }
 
     public void writeStringToFile(String toWrite) {
-        File moveFile = new File("move_file");
+        File moveFile = new File(main.pathAddition + "move_file");
         try (FileWriter moveWriter = new FileWriter(moveFile, false);) {
             moveWriter.write(toWrite);
             moveWriter.close();

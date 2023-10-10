@@ -38,9 +38,9 @@ public class main {
       System.out.println("Directory not found");
 
     System.out.println("pathAddition: " + pathAddition);
-    loop: while (!(new File("end_game").exists())) {
+    loop: while (!(new File(main.pathAddition + "end_game").exists())) {
       // URL pathToPass = main.class.getResource("groupname.pass");
-      File passFile = new File(groupName + ".pass");
+      File passFile = new File(main.pathAddition + groupName + ".pass");
       if (passFile.exists()) {
         currentGame.handlePass();
         continue loop; // if passFile exists then go back to loop
@@ -56,7 +56,7 @@ public class main {
   }
 
   public static String oppMove() throws IOException {
-    File file = new File("move_file");
+    File file = new File(main.pathAddition + "move_file");
     InputStreamReader reader = new InputStreamReader(new FileInputStream(file));
     BufferedReader br = new BufferedReader(reader);
     String line = "";
