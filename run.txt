@@ -3,7 +3,8 @@ This file contains how to run our code.
 The program should run in any directory outside of it. But you should try and run it in the same directory 
 as project1.
 To run the program. You can start running the referee and then run main.java
-You can run main.java by clicking the start button in visual studio code or whatever IDE you are using.
+You can run main.java. You should have main.java open and then click the start button in visual studio code 
+or whatever IDE you are using.
 
 The referee command would be
 "python3 dots_boxes_referee/referee.py theWinner otherPlayer --time_limit 10"
