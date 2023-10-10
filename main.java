@@ -25,10 +25,14 @@ public class main {
     System.out.println("Working Directory = " + System.getProperty("user.dir"));
     if (!new File("move_file").exists())
       System.out.println("Can't find 'move_file'... \nSearching for directory...");
-
+    int y = 0;
     while ((!new File(pathAddition + "move_file").exists())) {
       pathAddition = findFile(new File(".").getAbsolutePath(), "move_file");
       pathAddition = pathAddition.substring(0, pathAddition.length() - "move_file".length());
+      if (++y == 500) {
+        System.out.println("Struggling to find the movefile... Is the game started? If not try changing directories!");
+        y = 0;
+      }
     }
 
     if (!pathAddition.equals(""))
