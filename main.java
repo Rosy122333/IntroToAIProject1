@@ -28,7 +28,9 @@ public class main {
     int y = 0;
     while ((!new File(pathAddition + "move_file").exists())) {
       pathAddition = findFile(new File(".").getAbsolutePath(), "move_file");
-      pathAddition = pathAddition.substring(0, pathAddition.length() - "move_file".length());
+
+      if (pathAddition.length() >= move_file.length())
+        pathAddition = pathAddition.substring(0, pathAddition.length() - "move_file".length());
       if (++y == 500) {
         System.out.println("Struggling to find the movefile... Is the game started? If not try changing directories!");
         y = 0;
