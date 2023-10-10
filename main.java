@@ -31,8 +31,9 @@ public class main {
 
       if (pathAddition.length() >= "move_file".length())
         pathAddition = pathAddition.substring(0, pathAddition.length() - "move_file".length());
-      if (++y == 500) {
-        System.out.println("Struggling to find the movefile... Is the game started? If not try changing directories!");
+      if (++y == 200) {
+        System.out.println(
+            "theWinner: Struggling to find the movefile... Is the game started? If yes try changing directories!");
         y = 0;
       }
     }
